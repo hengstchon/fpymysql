@@ -11,7 +11,7 @@ SQL Injection Warning: pymysql.escape_string(value)
 
 """
 
-from pymysql import (connect, cursors, err, escape_sequence)
+from pymysql import (connect, cursors, err)
 
 
 def connect_db(mysqldb_conn):
@@ -87,7 +87,7 @@ class MYSQL:
 
             params = []
             for param in data:
-                params.append(escape_sequence(param.values(), 'utf-8'))
+                params.append((param.values()))
 
             values = ', '.join(params)
             fields = ', '.join('`{}`'.format(x) for x in param.keys())
